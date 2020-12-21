@@ -7,19 +7,22 @@ spring:
     url: jdbc:oracle:thin:@192.168.89.163:1521:ORCLCDB
     username: c##sherry
     password: Conan_Sherry#4869
+    type: com.zaxxer.hikari.HikariDataSource
 
-#   HikariCP
-#    type: com.zaxxer.hikari.HikariDataSource
-#    hikari:
-#      minimum-idle: 5
-#      maximum-pool-size: 15
-#      login-timeout: 30
-#      connection-timeout: 50000
-#      auto-commit: true
-#      idle-timeout: 30000
-#      pool-name: Hikari-Pool
-#      max-lifetime: 1800000
-#      connection-test-query: SELECT 1
+#   HikariCP 链接池
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      login-timeout: 30
+      connection-timeout: 50000
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: HikariCP
+      max-lifetime: 1800000
+#       MYSQL=SELECT 1 , ORACLE = SELECT 1 FROM DUAL ,如果配置错误会报如下错误:
+#      Caused by: oracle.jdbc.OracleDatabaseException: ORA-00923: 未找到要求的 FROM
+      connection-test-query: SELECT 1 FROM DUAL
+      validation-timeout: 1000
 
   jpa:
     hibernate:
